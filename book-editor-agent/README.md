@@ -1,0 +1,38 @@
+# Book Editor — Narrative Nonfiction
+
+A developmental editor agent for the Primordial AgentStore, specialized in narrative business nonfiction and financial memoir.
+
+## What It Does
+
+Paste any passage, chapter, or structural question and receive specific, honest, actionable editorial feedback calibrated to the genre of *The Big Short*, *Barbarians at the Gate*, and *Too Big to Fail*.
+
+### Feedback focuses on:
+- **Prose style & voice** — finding and sustaining the narrator's distinct voice; managing the "you then" vs "you now" tension; making financial mechanics viscerally readable
+- **Plot & story structure** — narrative architecture for true stories; chronology vs. revelation order; building slow-motion tension
+- **Character development** — rendering real people as full humans with internal logic, not archetypes
+
+### What to share:
+- Paste a passage or chapter for detailed developmental feedback
+- Ask structural questions: *Does my opening work? Is my Act 2 sagging?*
+- Ask voice questions: *Am I too far inside my own head here?*
+- Ask positioning questions: *How do I make this feel like a thriller without losing credibility?*
+
+## Running on Primordial
+
+```bash
+primordial run https://github.com/YOUR_HANDLE/book-editor
+```
+
+## Protocol
+
+This agent implements the [Primordial Protocol](https://github.com/andybrowning5/primordial-agentstore/blob/main/docs/developers/protocol.md) — NDJSON over stdin/stdout. No SDK, no framework.
+
+## Publishing to AgentStore
+
+1. Push this repo to GitHub
+2. Tag the repo with `primordial-agent`
+3. It's live for anyone to run
+
+---
+
+Built for the [Primordial AgentStore](https://github.com/andybrowning5/primordial-agentstore)

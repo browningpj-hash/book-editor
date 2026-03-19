@@ -1,0 +1,14 @@
+{
+  "name": "book-editor",
+  "version": "0.1.0",
+  "description": "Developmental editor agent for narrative business nonfiction",
+  "type": "module",
+  "main": "src/agent.mjs",
+  "scripts": {
+    "start": "node src/agent.mjs"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
