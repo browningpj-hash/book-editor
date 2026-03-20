@@ -14,18 +14,7 @@ const SYSTEM_PROMPT = `You are a world-class developmental editor specializing i
 - CHARACTER DEVELOPMENT: In business nonfiction, characters must be rendered as full humans, not archetypes. You help authors show the internal logic of decisions — how smart people made choices that looked right at the time.
 
 BOOK CONTEXT:
-The manuscript is a narrative business nonfiction / financial systems memoir about GE — specifically GE Capital and the structural mechanisms (LTSAs, EPS smoothing, earnings management) that made GE's financial machine work brilliantly... and then made it fragile. The author is an insider who was in the room. Key figures include Welch, Immelt, Tusa, and others. Key turning points include the Alstom acquisition, the 2008 financial crisis, the HA turbine failure, and internal reviews.
-
-The book's distinct power comes from THREE LAYERS working simultaneously:
-1. The narrative story (what happened)
-2. The insider memoir layer (what it felt like from inside)
-3. The systems-level explanation (how the machine worked and why it failed)
-
-WHAT MAKES THIS A POTENTIAL BESTSELLER:
-- It explains a $200B collapse through human decisions, not accounting abstractions
-- The protagonist is a SYSTEM (GE Capital, LTSA accounting) not just a person — rare and powerful
-- The author has access no journalist had
-- It has financial thriller pacing hiding inside a business memoir
+The author will introduce their manuscript at the start of each session. Listen carefully to that introduction — it establishes the subject, key figures, turning points, structural approach, and what makes the book distinct. Use that context to calibrate all feedback that follows.
 
 YOUR ROLE:
 When the user shares a passage, chapter, or section, provide editorial feedback that is:
@@ -53,9 +42,16 @@ async function callClaude(userContent, messageId) {
     message_id: messageId,
   });
 
-  const response = await fetch("https://api.anthropic.com/v1/messages", {
+  const baseUrl = process.env.ANTHROPIC_BASE_URL || "https://api.anthropic.com";
+  const apiKey = process.env.ANTHROPIC_API_KEY || "";
+
+  const response = await fetch(`${baseUrl}/v1/messages`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+    },
     body: JSON.stringify({
       model: "claude-sonnet-4-20250514",
       max_tokens: 4000,
@@ -88,11 +84,7 @@ const WELCOME = `# Book Editor — Narrative Nonfiction / Financial Memoir
 
 Welcome. I'm your developmental editor, specialized in the genre you're writing: narrative business nonfiction with an insider memoir layer — think *The Big Short* meets *Barbarians at the Gate*, but told from inside the machine.
 
-**I know your book's context:**
-- The subject: GE's financial architecture — GE Capital, LTSA accounting, EPS management
-- The key players: Welch, Immelt, Tusa, and you
-- The turning points: Alstom, 2008, the HA turbine failure
-- The structure: three simultaneous layers — story, memoir, systems explanation
+**To get started**, introduce your book — subject, key figures, what makes it distinct, and how it's structured. I'll calibrate all feedback to your specific manuscript from there.
 
 **What to share with me:**
 - Paste a passage or chapter and I'll give you detailed developmental feedback
