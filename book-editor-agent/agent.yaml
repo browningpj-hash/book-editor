@@ -29,7 +29,7 @@ runtime:
   resources:
     max_memory: 1GB
     max_cpu: 1
-    max_time: 2h
+    max_time: 1h
 
 keys:
   - provider: anthropic
